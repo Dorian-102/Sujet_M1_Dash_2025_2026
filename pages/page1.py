@@ -1,4 +1,4 @@
-from dash import Dash, dcc, html
+from dash import dcc, html
 import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
@@ -43,7 +43,7 @@ layout = dbc.Container([
     dbc.Card([
         dbc.CardHeader(
             html.H4("Quantités vendues (Total Volume)", className="text-white mb-0"),
-            style={"backgroundColor": "#1a6fc4"}  # Bleu différent
+            style={"backgroundColor": "#1a6fc4"}
         ),
         dbc.CardBody([
             dbc.Row([
@@ -56,14 +56,13 @@ layout = dbc.Container([
                 dbc.Col([
                     dbc.Badge(
                         "Sélectionnez une région:",
-                        color="primary",
                         className="w-100 text-center mb-2",
                         style={
                             "fontSize": "1rem",
                             "padding": "10px",
                             "backgroundColor": "#9b59b6",
                             "color": "white",
-                            "borderRadius": "25px"  # Arrondi
+                            "borderRadius": "25px"
                         }
                     ),
                     dbc.Select(
@@ -75,14 +74,6 @@ layout = dbc.Container([
                     dcc.Graph(id="graph-region-selectionnee")
                 ], width=6),
             ])
-        ], style={"backgroundColor": "#000000"}),  # Fond noir
+        ], style={"backgroundColor": "#000000"}),
     ], className="mt-3")
 ], fluid=True)
-
-# Initialise the App
-app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-app.layout = layout
-
-# Run the App
-if __name__ == '__main__':
-    app.run(debug=True)
